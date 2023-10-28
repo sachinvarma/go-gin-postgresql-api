@@ -1,9 +1,21 @@
 package books
 
 import (
-	"gorm.io/gorm"
+    "net/http"
+
+    "github.com/sachinvarma/go-gin-postgresql-api/pkg/common/models"
+    "github.com/gin-gonic/gin"
 )
 
-type handler struct {
-	DB *gorm.DB
+func (h handler) GetBook(ctx *gin.Context) {
+    id := ctx.Param("id")
+
+    var book models.Book
+
+    if result := h.DB.First(&book, id); result.Error != nil {
+        ctx.AbortWithError(http.StatusNotFound, result.Error)
+        return
+    }
+
+    ctx.JSON(http.StatusOK, &book)
 }
