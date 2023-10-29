@@ -3,7 +3,7 @@ package db
 import (
 	"log"
 
-	"github.com/sachinvarma/go-gin-postgresql-api/pkg/common/models"
+	"github.com/sachinvarma/go-gin-postgresql-api/common/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

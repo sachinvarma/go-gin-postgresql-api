@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sachinvarma/go-gin-postgresql-api/pkg/common/models"
+	"github.com/sachinvarma/go-gin-postgresql-api/common/models"
 )
 
 type AddBookRequestBody struct {

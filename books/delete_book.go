@@ -1,23 +1,23 @@
 package books
 
 import (
-    "net/http"
+	"net/http"
 
-    "github.com/sachinvarma/go-gin-postgresql-api/pkg/common/models"
-    "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
+	"github.com/sachinvarma/go-gin-postgresql-api/common/models"
 )
 
 func (h handler) DeleteBook(ctx *gin.Context) {
-    id := ctx.Param("id")
+	id := ctx.Param("id")
 
-    var book models.Book
+	var book models.Book
 
-    if result := h.DB.First(&book, id); result.Error != nil {
-        ctx.AbortWithError(http.StatusNotFound, result.Error)
-        return
-    }
+	if result := h.DB.First(&book, id); result.Error != nil {
+		ctx.AbortWithError(http.StatusNotFound, result.Error)
+		return
+	}
 
-    h.DB.Delete(&book)
+	h.DB.Delete(&book)
 
-    ctx.Status(http.StatusOK)
+	ctx.Status(http.StatusOK)
 }
